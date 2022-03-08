@@ -47,19 +47,19 @@ const Home: NextPage = () => {
           <Grid.Row>
             <Grid.Column textAlign="center">
               <Header as="h1">
-                <CountUp end={completedBookings} duration={2} />
+                <CountUp end={completedBookings} duration={1} />
               </Header>
               <Header as="h5">Completed Bookings</Header>
             </Grid.Column>
             <Grid.Column textAlign="center">
               <Header as="h1">
-                <CountUp end={registeredPersonals} duration={2} />
+                <CountUp end={registeredPersonals} duration={1} />
               </Header>
               <Header as="h5">Users</Header>
             </Grid.Column>
             <Grid.Column textAlign="center">
               <Header as="h1">
-                <CountUp end={registeredDrivers} duration={2} />
+                <CountUp end={registeredDrivers} duration={1} />
               </Header>
               <Header as="h5">Drivers</Header>
             </Grid.Column>

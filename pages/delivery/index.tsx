@@ -49,67 +49,57 @@ const Delivery: FC = () => {
       {coords ? (
         bookings.length > 0 ? (
           <Segment>
-            <Grid columns={2}>
-              {bookings
-                .sort((a, b) => {
-                  const lat1 = coords.lat;
-                  const lng1 = coords.lng;
+            {bookings
+              .sort((a, b) => {
+                const lat1 = coords.lat;
+                const lng1 = coords.lng;
 
-                  return (
-                    calculateDistance(
-                      [lng1, lat1],
-                      [a.pickUp.lng, a.pickUp.lat]
-                    ) -
-                    calculateDistance(
-                      [lng1, lat1],
-                      [b.pickUp.lng, b.pickUp.lat]
-                    )
-                  );
-                })
-                .map((details, idx) => {
-                  const lat1 = coords.lat;
-                  const lng1 = coords.lng;
-
-                  const dist = calculateDistance(
+                return (
+                  calculateDistance(
                     [lng1, lat1],
-                    [details.pickUp.lng, details.pickUp.lat]
-                  );
-                  return (
-                    <Grid.Row stretched key={idx}>
-                      <Grid.Column width={3}>
-                        <Button
-                          fluid
-                          color="yellow"
-                          onClick={async () => {
-                            const {
-                              data: { status },
-                            } = await axios.post<{ status: Array<StatusCode> }>(
-                              getEndpoint(`/api/booking/take/`),
-                              {
-                                id: details.id,
-                              }
-                            );
-                            router.replace(
-                              getEndpoint(`/booking/${details.id}`)
-                            );
-                          }}
-                        >
-                          TAKE ({Math.round(dist * 100) / 100} km away)
-                        </Button>
-                      </Grid.Column>
-                      <Grid.Column width={13}>
-                        <BookingCard details={details} />
-                      </Grid.Column>
-                    </Grid.Row>
-                  );
-                })}
-            </Grid>
+                    [a.pickUp.lng, a.pickUp.lat]
+                  ) -
+                  calculateDistance([lng1, lat1], [b.pickUp.lng, b.pickUp.lat])
+                );
+              })
+              .map((details, idx) => {
+                const lat1 = coords.lat;
+                const lng1 = coords.lng;
+
+                const dist = calculateDistance(
+                  [lng1, lat1],
+                  [details.pickUp.lng, details.pickUp.lat]
+                );
+                return (
+                  <Segment>
+                    <BookingCard details={details} />
+                    <br />
+                    <Button
+                      fluid
+                      color="yellow"
+                      onClick={async () => {
+                        const {
+                          data: { status },
+                        } = await axios.post<{ status: Array<StatusCode> }>(
+                          getEndpoint(`/api/booking/take/`),
+                          {
+                            id: details.id,
+                          }
+                        );
+                        router.replace(getEndpoint(`/booking/${details.id}`));
+                      }}
+                    >
+                      TAKE ({Math.round(dist * 100) / 100} km away)
+                    </Button>
+                  </Segment>
+                );
+              })}
           </Segment>
         ) : (
           <Segment textAlign="center">No Available Deliveries</Segment>
         )
       ) : (
-        <Loader inverted content="Getting your location..." />
+        <Loader>Getting your location...</Loader>
       )}
     </>
   );
