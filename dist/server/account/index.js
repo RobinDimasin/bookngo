@@ -122,6 +122,9 @@ const AccountFactory = (type, schema) => {
                 const x = !!(await AccountMngr.Model.findOne({ key }));
                 return x;
             }
+            static async registeredCount() {
+                return (await AccountMngr.Model.find()).length;
+            }
         },
         _a.logger = Logger_1.Logger.new(type.toUpperCase()),
         _a.schema = Object.assign(Object.assign({}, schema), { key: { type: String, required: true, unique: true }, password: { type: String, required: true }, accountType: { type: String, required: true } }),

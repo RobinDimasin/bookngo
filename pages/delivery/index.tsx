@@ -18,7 +18,10 @@ import BookingCard from "../../components/booking/Booking";
 const Delivery: FC = () => {
   const router = useRouter();
   const [bookings, setBookings] = useState<BookingDetailsExtendend[]>([]);
-  const [coords, setCoords] = useState<{ lat: number; lng: number }>();
+  const [coords, setCoords] = useState<{ lat: number; lng: number }>({
+    lat: 14.5799875,
+    lng: 120.9758997,
+  });
 
   useEffect(() => {
     (async () => {
@@ -71,7 +74,7 @@ const Delivery: FC = () => {
                   [details.pickUp.lng, details.pickUp.lat]
                 );
                 return (
-                  <Segment>
+                  <Segment key={idx}>
                     <BookingCard details={details} />
                     <br />
                     <Button
