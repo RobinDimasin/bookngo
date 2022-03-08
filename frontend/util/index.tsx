@@ -9,7 +9,7 @@ import { BASE_URL } from "../../shared/utils";
 import * as turf from "@turf/turf";
 
 export const getEndpoint = (path: string) => {
-  return new URL(path, BASE_URL).toString();
+  return BASE_URL + path;
 };
 
 export const handleRedirectButton = (router: NextRouter, path: string) => {

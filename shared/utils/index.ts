@@ -1,6 +1,8 @@
 export const BASE_URL =
-  process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
+  process.env.NODE_ENV === "production"
+    ? "http://localhost:3000"
+    : "http://localhost:3000";
 
 export const HOSTNAME =
-  process.env.NODE_ENV === "production" ? "" : "localhost";
+  process.env.NODE_ENV === "production" ? "localhost" : "localhost";
 export const PORT = parseInt(process.env.PORT || "3000", 10);
