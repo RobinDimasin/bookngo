@@ -15,26 +15,17 @@ import { useStore } from "../frontend/store";
 import { getEndpoint, handleRedirectButton } from "../frontend/util";
 import { AccountTypes } from "../shared/types/AccountTypes";
 
+import { isMobile } from "react-device-detect";
+
 const Navbar: FC = () => {
   const { ClientStore } = useStore();
   const router = useRouter();
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    window
-      .matchMedia("(min-width: 768px)")
-      .addEventListener("change", (e) => setIsMobile(!e.matches));
-  }, []);
 
   const handleLougout = () => {
     removeCookies("accessToken");
     ClientStore.setToken(null);
     router.push(getEndpoint("/"));
   };
-
-  useEffect(() => {
-    console.log({ isMobile });
-  }, [isMobile]);
 
   const navContent = useCallback(
     (text: string | JSX.Element, icon: SemanticICONS) => {
@@ -43,13 +34,17 @@ const Navbar: FC = () => {
     [isMobile]
   );
 
+  useEffect(() => {
+    console.log({ isMobile });
+  }, [isMobile]);
+
   return (
     <Menu>
       <Menu.Item
         header
         active={router.asPath === "/"}
         onClick={handleRedirectButton(router, "/")}
-        fitted={!isMobile}
+        {...(!isMobile ? { fitted: "vertically" } : {})}
       >
         {navContent(
           <div style={{ padding: "15px" }}>
