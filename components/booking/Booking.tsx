@@ -51,7 +51,7 @@ const BookingCard: FC<{ id?: string; details?: BookingDetailsExtendend }> = ({
                     `/booking/${booking.id}`
                   )}
                 >
-                  {booking.pickUp.name}
+                  {booking.pickUp.name} to {booking.dropOut.name}
                 </span>
                 {makeLabel(
                   booking.status,
