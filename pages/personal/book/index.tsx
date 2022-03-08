@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import {
   Button,
   Form,
@@ -22,6 +22,7 @@ import { getEndpoint } from "../../../frontend/util";
 import MultiStageForm from "../../../components/MultiStageForm";
 import MapInput from "../../../components/MapInput";
 import { useStore } from "../../../frontend/store";
+import { AccountTypes } from "../../../shared/types/AccountTypes";
 
 const specialPackagingOptions = [
   { key: "f", text: "Fragile", value: "fragile" },
@@ -81,6 +82,12 @@ const Test: FC = () => {
     lat: 14.5799875,
     lng: 120.9758997,
   });
+
+  useEffect(() => {
+    if (!ClientStore.key || ClientStore.accountType === AccountTypes.DRIVER) {
+      router.replace(getEndpoint("/login?type=personal"));
+    }
+  }, []);
 
   const formik = useFormik({
     initialValues: {
