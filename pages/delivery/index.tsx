@@ -89,7 +89,9 @@ const Delivery: FC = () => {
                                 id: details.id,
                               }
                             );
-                            router.push(getEndpoint(`/booking/${details.id}`));
+                            router.replace(
+                              getEndpoint(`/booking/${details.id}`)
+                            );
                           }}
                         >
                           TAKE ({Math.round(dist * 100) / 100} km away)

@@ -176,7 +176,7 @@ const Test: FC = () => {
         setLoading(false);
 
         if (id) {
-          router.push(getEndpoint(`/booking/${id}`));
+          router.replace(getEndpoint(`/booking/${id}`));
         }
       }
     },
@@ -530,8 +530,8 @@ const Test: FC = () => {
               color="yellow"
               floated="right"
               onClick={() => {
-                ClientStore.fetchBookingCount();
                 formik.submitForm();
+                ClientStore.fetchBookingCount();
               }}
             />
           );

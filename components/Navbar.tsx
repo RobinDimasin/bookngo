@@ -24,7 +24,7 @@ const Navbar: FC = () => {
   const handleLougout = () => {
     removeCookies("accessToken");
     ClientStore.setToken(null);
-    router.push(getEndpoint("/"));
+    router.replace(getEndpoint("/"));
   };
 
   const navContent = useCallback(

@@ -14,7 +14,6 @@ export const getEndpoint = (path: string) => {
 
 export const handleRedirectButton = (router: NextRouter, path: string) => {
   return () => {
-    // router.push(getEndpoint(path));
     router.replace(getEndpoint(path));
   };
 };

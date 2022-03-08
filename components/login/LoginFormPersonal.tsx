@@ -56,9 +56,9 @@ const LoginFormPersonal: FC = () => {
         const query = router.query;
 
         if (query.next && typeof query.next === "string") {
-          router.push(query.next);
+          router.replace(query.next);
         } else {
-          router.push(getEndpoint("/"));
+          router.replace(getEndpoint("/"));
         }
       }
     },

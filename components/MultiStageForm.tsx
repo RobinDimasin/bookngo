@@ -24,7 +24,7 @@ const MultiStageForm: FC<{
 
   useEffect(() => {
     stages[currentStepIndex].onLoad();
-  }, [currentStepIndex, stages]);
+  }, [currentStepIndex]);
 
   return (
     <>

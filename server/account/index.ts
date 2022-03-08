@@ -168,6 +168,10 @@ export const AccountFactory = <
       const x = !!(await AccountMngr.Model.findOne({ key }));
       return x;
     }
+
+    static async registeredCount() {
+      return (await AccountMngr.Model.find()).length;
+    }
   };
 };
 

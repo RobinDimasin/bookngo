@@ -33,7 +33,7 @@ const BookingStatusDetails: FC<{ status: BookingStatus[] }> = ({
         setLoading(false);
       }
     })();
-  }, [ClientStore.key, status]);
+  }, [ClientStore.key]);
 
   return (
     <>
