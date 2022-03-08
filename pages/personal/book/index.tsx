@@ -343,7 +343,7 @@ const Test: FC = () => {
           {
             stepContent: (
               <Step.Content>
-                <Step.Title>Drop Out</Step.Title>
+                <Step.Title>Drop Off</Step.Title>
               </Step.Content>
             ),
             content: (
