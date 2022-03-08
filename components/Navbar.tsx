@@ -157,18 +157,14 @@ const Navbar: FC = () => {
           </>
         ) : (
           <>
-            <Menu.Item>
-              <Button onClick={handleRedirectButton(router, "/register")}>
-                Register
-              </Button>
+            <Menu.Item
+              onClick={handleRedirectButton(router, "/register")}
+              color="red"
+            >
+              Register
             </Menu.Item>
-            <Menu.Item>
-              <Button
-                onClick={handleRedirectButton(router, "/login")}
-                color="yellow"
-              >
-                Login
-              </Button>
+            <Menu.Item onClick={handleRedirectButton(router, "/login")}>
+              Login
             </Menu.Item>
           </>
         )}
