@@ -1,0 +1,8 @@
+.marker {
+    color: red;
+    font-size: 1rem;
+}
+
+.marker::before {
+    content: attr(text-value);
+}

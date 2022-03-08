@@ -1,15 +1,23 @@
 .container {
   padding: 0 2rem;
+  background-image: url('../public/bg.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .main {
-  min-height: 100vh;
   padding: 4rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: white;
+}
+
+.main p, .main h1 {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
 }
 
 .footer {
