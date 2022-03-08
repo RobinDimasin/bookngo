@@ -48,7 +48,7 @@ const Delivery: FC = () => {
   }, []);
 
   return (
-    <>
+    <div style={{ width: "min(768px, 80%)", margin: "auto" }}>
       {coords ? (
         bookings.length > 0 ? (
           <Segment>
@@ -104,7 +104,7 @@ const Delivery: FC = () => {
       ) : (
         <Loader>Getting your location...</Loader>
       )}
-    </>
+    </div>
   );
 };
 

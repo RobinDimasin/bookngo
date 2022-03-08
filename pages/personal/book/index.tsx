@@ -103,7 +103,7 @@ const Test: FC = () => {
       paymentMethod: BookingPaymentMethod.COD,
 
       tip: 0,
-      deliveryFee: 0,
+      deliveryFee: 10,
     },
     validationSchema: Yup.object({
       width: Yup.number().required("Required").min(0),
@@ -123,7 +123,7 @@ const Test: FC = () => {
       dropOutNotes: Yup.string().max(256),
 
       tip: Yup.number().min(0).default(0),
-      deliveryFee: Yup.number().min(0).default(0),
+      deliveryFee: Yup.number().min(10).default(0),
 
       paymentMethod: Yup.string()
         .required("Required")
@@ -515,7 +515,10 @@ const Test: FC = () => {
                 )
               );
 
-              formik.setFieldValue("deliveryFee", Math.ceil(distance) * 10);
+              formik.setFieldValue(
+                "deliveryFee",
+                Math.max(10, Math.ceil(distance) * 10)
+              );
             },
           },
         ]}
