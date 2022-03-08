@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/bookings/._middleware.ts", "pages/booking/._middleware.ts", "pages/login/._middleware.ts", "pages/personal/book/._middleware.ts", "pages/register/._middleware.ts"],
   "exclude": ["node_modules"]
 }
